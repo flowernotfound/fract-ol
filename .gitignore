@@ -1,3 +1,5 @@
 .DS_Store
 /test
 /minilibx-linux
+*.o
+fract-ol
