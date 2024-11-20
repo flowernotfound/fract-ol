@@ -1,36 +1,5 @@
 #include "../inc/fract-ol.h"
 
-int    key_hook(int keycode, t_data *data)
-{
-    if (keycode == KEY_ESC)
-    {
-        mlx_destroy_window(data->mlx, data->win);
-        exit(0);
-    }
-    else if (keycode == KEY_LEFT || keycode == KEY_RIGHT ||
-             keycode == KEY_UP || keycode == KEY_DOWN)
-    {
-        move(data, keycode);
-        redraw(data);
-    }
-    else if (keycode == KEY_C)
-    {
-        data->color_shift += 0x100000;
-        redraw(data);
-    }
-    return (0);
-}
-
-int    mouse_hook(int button, int x, int y, t_data *data)
-{
-    if (button == SCROLL_UP || button == SCROLL_DOWN)
-    {
-        zoom(data, x, y, button == SCROLL_UP);
-        redraw(data);
-    }
-    return (0);
-}
-
 void    zoom(t_data *data, int x, int y, int zoom_in)
 {
     double  mouse_r;
@@ -39,7 +8,6 @@ void    zoom(t_data *data, int x, int y, int zoom_in)
 
     mouse_r = data->min_r + (double)x * (data->max_r - data->min_r) / WINDOW_SIZE;
     mouse_i = data->min_i + (double)y * (data->max_i - data->min_i) / WINDOW_SIZE;
-
     // いったんこの倍率
     zoom_factor = zoom_in ? 0.9 : 1.1;
 	// マウス位置を中心でズーム
@@ -57,7 +25,6 @@ void    move(t_data *data, int direction)
 
     range_r = data->max_r - data->min_r;
     range_i = data->max_i - data->min_i;
-
     // 移動する量　いったんこれでやってる
     move_factor = 0.05;
     if (direction == KEY_LEFT)
@@ -104,4 +71,16 @@ void    redraw(t_data *data)
         y++;
     }
     mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+}
+
+int handle_expose(t_data *data)
+{
+    redraw(data);
+    return (0);
+}
+
+int close_window(t_data *data)
+{
+	clean_exit(data);
+	return (0);
 }

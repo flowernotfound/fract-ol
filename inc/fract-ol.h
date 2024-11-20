@@ -58,6 +58,7 @@ typedef struct s_data {
 
 int key_hook(int keycode, t_data *data);
 int    mouse_hook(int button, int x, int y, t_data *data);
+int handle_expose(t_data *data);
 int close_window(t_data *data);
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void    zoom(t_data *data, int x, int y, int zoom_in);
@@ -73,5 +74,6 @@ int     create_rgb(int r, int g, int b);
 int get_color(int iteration, int max_iteration, int shift);
 void    calculate_tricorn(t_data *data, int x, int y);
 void    init_tricorn(t_data *data);
+void	clean_exit(t_data *data);
 
 #endif
