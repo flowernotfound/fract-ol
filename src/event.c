@@ -82,14 +82,16 @@ void    redraw(t_data *data)
     int x;
     int y;
 
-	// 再描画してるだけ
     y = 0;
     while (y < WINDOW_SIZE)
     {
         x = 0;
         while (x < WINDOW_SIZE)
         {
-            calculate_mandelbrot(data, x, y);
+            if (data->type == MANDELBROT)
+                calculate_mandelbrot(data, x, y);
+            else if (data->type == JULIA)
+                calculate_julia(data, x, y);
             x++;
         }
         y++;

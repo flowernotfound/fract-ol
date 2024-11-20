@@ -51,6 +51,7 @@ void    calculate_mandelbrot(t_data *data, int x, int y)
 
 void    init_mandelbrot(t_data *data)
 {
+	data->type = MANDELBROT;
     data->min_r = -2.0;
     data->max_r = 1.0;
     data->min_i = -1.5;
@@ -58,11 +59,57 @@ void    init_mandelbrot(t_data *data)
     data->max_iter = 200;
 }
 
-int main(void)
+void    calculate_julia(t_data *data, int x, int y)
+{
+    double  z_r;
+    double  z_i;
+    int     iter;
+    double  tmp;
+
+    z_r = data->min_r + (double)x * (data->max_r - data->min_r) / WINDOW_SIZE;
+    z_i = data->min_i + (double)y * (data->max_i - data->min_i) / WINDOW_SIZE;
+
+    iter = 0;
+    while (z_r * z_r + z_i * z_i <= 4 && iter < data->max_iter)
+    {
+        tmp = z_r;
+        z_r = z_r * z_r - z_i * z_i + data->julia_r;
+        z_i = 2 * tmp * z_i + data->julia_i;
+        iter++;
+    }
+    if (iter == data->max_iter)
+        my_mlx_pixel_put(&data->img, x, y, 0x000000);
+    else
+    {
+        int color = (iter * 0xFF0000 / data->max_iter) & 0xFF0000;
+        my_mlx_pixel_put(&data->img, x, y, color);
+    }
+}
+
+void    init_julia(t_data *data, double julia_r, double julia_i)
+{
+    data->type = JULIA;
+    data->julia_r = julia_r;
+    data->julia_i = julia_i;
+    data->min_r = -2.0;
+    data->max_r = 2.0;
+    data->min_i = -2.0;
+    data->max_i = 2.0;
+    data->max_iter = 200;
+}
+
+int main(int ac, char **av)
 {
 	t_data data;
 	int x;
 	int y;
+
+    if (ac < 2)
+    {
+        printf("Usage: ./fractol <type> [julia_r julia_i]\n");
+        printf("type: mandelbrot or julia\n");
+        return (1);
+    }
 
 	// mlxを初期化する
 	data.mlx = mlx_init();
@@ -70,6 +117,24 @@ int main(void)
 		return (1);
 
 	// 引数を処理する
+    if (strcmp(av[1], "mandelbrot") == 0)
+    {
+        init_mandelbrot(&data);
+    }
+    else if (strcmp(av[1], "julia") == 0)
+    {
+        if (ac != 4)
+        {
+            printf("Julia set requires 2 parameters\n");
+            return (1);
+        }
+        init_julia(&data, atof(av[2]), atof(av[3]));
+    }
+    else
+    {
+        printf("Invalid fractal type\n");
+        return (1);
+    }
 
 	// ウィンドウを作成する
 	data.win = mlx_new_window(data.mlx, WINDOW_SIZE, WINDOW_SIZE, "first window");
@@ -87,21 +152,8 @@ int main(void)
                                  &data.img.line_length,
                                  &data.img.endian);
 
-    // まmんでるぶろの初期化
-    init_mandelbrot(&data);
-
-    // フラクタル描画する
-    y = 0;
-    while (y < WINDOW_SIZE)
-    {
-        x = 0;
-        while (x < WINDOW_SIZE)
-        {
-            calculate_mandelbrot(&data, x, y);
-            x++;
-        }
-        y++;
-    }
+	// 描画
+	redraw(&data);
 
     // 作成したイメージをウィンドウに表示
     mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);

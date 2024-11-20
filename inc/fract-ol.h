@@ -6,6 +6,7 @@
 
 // for debug
 # include <stdio.h>
+# include <string.h>
 
 # define WINDOW_SIZE 600
 // キーコードはどのライブラリ使うかによって変わる
@@ -20,6 +21,12 @@
 // マウス
 # define SCROLL_UP    4
 # define SCROLL_DOWN  5
+
+// 図形の種類
+typedef enum e_fractal_type {
+    MANDELBROT,
+    JULIA
+} t_fractal_type;
 
 typedef struct s_img {
     void    *img;
@@ -38,6 +45,9 @@ typedef struct s_data {
     double  min_i;      // 虚部のmin
     double  max_i;      // 虚部のmax
     int     max_iter;   // 発散判定の上限回数
+	t_fractal_type type;   // 種類
+    double  julia_r;       // ジュリア集合用
+    double  julia_i;
 } t_data;
 
 int key_hook(int keycode, t_data *data);
@@ -51,5 +61,7 @@ int close_window(t_data *data);
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void    calculate_mandelbrot(t_data *data, int x, int y);
 void    init_mandelbrot(t_data *data);
+void    calculate_julia(t_data *data, int x, int y);
+void    init_julia(t_data *data, double julia_r, double julia_i);
 
 #endif
