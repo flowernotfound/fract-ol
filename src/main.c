@@ -1,16 +1,5 @@
 #include "../inc/fract-ol.h"
 
-int key_hook(int keycode, t_data *data)
-{
-	printf("keycode: %d\n", keycode);
-	if (keycode == KEY_ESC)
-	{
-		mlx_destroy_window(data->mlx, data->win);
-		exit(0);
-	}
-	return (0);
-}
-
 int close_window(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
@@ -116,8 +105,8 @@ int main(void)
 
     // 作成したイメージをウィンドウに表示
     mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
-
 	mlx_key_hook(data.win, key_hook, &data);
+	mlx_mouse_hook(data.win, mouse_hook, &data);
 	mlx_hook(data.win, X, 0, close_window, &data);
 
 	// イベントまち

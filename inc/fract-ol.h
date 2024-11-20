@@ -12,6 +12,14 @@
 // 今はminilibx-linuxを使ってるからこうなる　mac用のものでコンパイルすると個々変える必要ある
 # define KEY_ESC 65307
 # define X 120
+// 矢印
+# define KEY_UP      65362
+# define KEY_DOWN    65364
+# define KEY_LEFT    65361
+# define KEY_RIGHT   65363
+// マウス
+# define SCROLL_UP    4
+# define SCROLL_DOWN  5
 
 typedef struct s_img {
     void    *img;
@@ -33,7 +41,15 @@ typedef struct s_data {
 } t_data;
 
 int key_hook(int keycode, t_data *data);
+int    mouse_hook(int button, int x, int y, t_data *data);
 int close_window(t_data *data);
 void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void    zoom(t_data *data, int x, int y, int zoom_in);
+void    move(t_data *data, int direction);
+void    redraw(t_data *data);
+int close_window(t_data *data);
+void    my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void    calculate_mandelbrot(t_data *data, int x, int y);
+void    init_mandelbrot(t_data *data);
 
 #endif
