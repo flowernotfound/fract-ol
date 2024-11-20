@@ -25,6 +25,11 @@ typedef struct s_data {
     void    *mlx;
     void    *win;
 	t_img   img;
+	double  min_r;      // 実部のmin
+    double  max_r;      // 実部のmax
+    double  min_i;      // 虚部のmin
+    double  max_i;      // 虚部のmax
+    int     max_iter;   // 発散判定の上限回数
 } t_data;
 
 int key_hook(int keycode, t_data *data);
