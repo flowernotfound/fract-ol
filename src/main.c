@@ -1,5 +1,11 @@
 #include "../inc/fract-ol.h"
 
+int handle_expose(t_data *data)
+{
+    redraw(data);
+    return (0);
+}
+
 int close_window(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
@@ -40,13 +46,13 @@ void    calculate_mandelbrot(t_data *data, int x, int y)
     }
 
     // 発散までの回数で色決める　ちょっとここは後で考える
+    int color;
     if (iter == data->max_iter)
-        my_mlx_pixel_put(&data->img, x, y, 0x000000);
+        color = 0x000000;
     else
-    {
-        int color = (iter * 0xFF0000 / data->max_iter) & 0xFF0000;
-        my_mlx_pixel_put(&data->img, x, y, color);
-    }
+        color = get_color(iter, data->max_iter, data->color_shift);
+
+    my_mlx_pixel_put(&data->img, x, y, color);
 }
 
 void    init_mandelbrot(t_data *data)
@@ -57,6 +63,7 @@ void    init_mandelbrot(t_data *data)
     data->min_i = -1.5;
     data->max_i = 1.5;
     data->max_iter = 200;
+	data->color_shift = 0;  // カラーシフトの初期値
 }
 
 void    calculate_julia(t_data *data, int x, int y)
@@ -77,13 +84,13 @@ void    calculate_julia(t_data *data, int x, int y)
         z_i = 2 * tmp * z_i + data->julia_i;
         iter++;
     }
+    int color;
     if (iter == data->max_iter)
-        my_mlx_pixel_put(&data->img, x, y, 0x000000);
+        color = 0x000000;
     else
-    {
-        int color = (iter * 0xFF0000 / data->max_iter) & 0xFF0000;
-        my_mlx_pixel_put(&data->img, x, y, color);
-    }
+        color = get_color(iter, data->max_iter, data->color_shift);
+
+    my_mlx_pixel_put(&data->img, x, y, color);
 }
 
 void    init_julia(t_data *data, double julia_r, double julia_i)
@@ -96,6 +103,7 @@ void    init_julia(t_data *data, double julia_r, double julia_i)
     data->min_i = -2.0;
     data->max_i = 2.0;
     data->max_iter = 200;
+	data->color_shift = 0;  // カラーシフトの初期値
 }
 
 int main(int ac, char **av)
@@ -159,8 +167,8 @@ int main(int ac, char **av)
     mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
 	mlx_key_hook(data.win, key_hook, &data);
 	mlx_mouse_hook(data.win, mouse_hook, &data);
-	mlx_hook(data.win, X, 0, close_window, &data);
-
+	mlx_hook(data.win, X_EVENT, X_MASK, close_window, &data);
+	mlx_hook(data.win, EXPOSE_EVENT, EXPOSE_MASK, handle_expose, &data);
 	// イベントまち
 	mlx_loop(data.mlx);
 

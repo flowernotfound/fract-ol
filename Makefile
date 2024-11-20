@@ -1,7 +1,7 @@
 CC = gcc
 # CFLAGS = -Wall -Wextra -Werror -I./minilibx-linux
 CFLAGS = -I./minilibx-linux
-SRC = ./src/main.c ./src/event.c
+SRC = ./src/main.c ./src/event.c ./src/color.c
 OBJ = $(SRC:.c=.o)
 NAME = fract-ol
 

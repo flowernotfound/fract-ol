@@ -12,12 +12,16 @@
 // キーコードはどのライブラリ使うかによって変わる
 // 今はminilibx-linuxを使ってるからこうなる　mac用のものでコンパイルすると個々変える必要ある
 # define KEY_ESC 65307
-# define X 120
+# define X_EVENT 17
+# define X_MASK 0L
+# define EXPOSE_EVENT 12
+# define EXPOSE_MASK (1L<<15)
 // 矢印
 # define KEY_UP      65362
 # define KEY_DOWN    65364
 # define KEY_LEFT    65361
 # define KEY_RIGHT   65363
+# define KEY_C 99
 // マウス
 # define SCROLL_UP    4
 # define SCROLL_DOWN  5
@@ -48,6 +52,7 @@ typedef struct s_data {
 	t_fractal_type type;   // 種類
     double  julia_r;       // ジュリア集合用
     double  julia_i;
+	int     color_shift;
 } t_data;
 
 int key_hook(int keycode, t_data *data);
@@ -63,5 +68,7 @@ void    calculate_mandelbrot(t_data *data, int x, int y);
 void    init_mandelbrot(t_data *data);
 void    calculate_julia(t_data *data, int x, int y);
 void    init_julia(t_data *data, double julia_r, double julia_i);
+int     create_rgb(int r, int g, int b);
+int get_color(int iteration, int max_iteration, int shift);
 
 #endif
