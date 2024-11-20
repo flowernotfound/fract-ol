@@ -29,7 +29,8 @@
 // 図形の種類
 typedef enum e_fractal_type {
     MANDELBROT,
-    JULIA
+    JULIA,
+	TRICORN
 } t_fractal_type;
 
 typedef struct s_img {
@@ -70,5 +71,7 @@ void    calculate_julia(t_data *data, int x, int y);
 void    init_julia(t_data *data, double julia_r, double julia_i);
 int     create_rgb(int r, int g, int b);
 int get_color(int iteration, int max_iteration, int shift);
+void    calculate_tricorn(t_data *data, int x, int y);
+void    init_tricorn(t_data *data);
 
 #endif

@@ -97,6 +97,8 @@ void    redraw(t_data *data)
                 calculate_mandelbrot(data, x, y);
             else if (data->type == JULIA)
                 calculate_julia(data, x, y);
+            else if (data->type == TRICORN)
+                calculate_tricorn(data, x, y);
             x++;
         }
         y++;

@@ -8,7 +8,7 @@ NAME = fract-ol
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -L/usr/X11R6/lib -lmlx -lX11 -lXext -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(OBJ) -L/usr/X11R6/lib -lmlx -lX11 -lXext -framework OpenGL -framework AppKit -g -fsanitize=address -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
