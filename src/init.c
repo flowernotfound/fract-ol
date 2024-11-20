@@ -34,3 +34,33 @@ void    init_tricorn(t_data *data)
     data->max_iter = 200;
     data->color_shift = 0;
 }
+
+int	init_mlx(t_data *data)
+{
+    data->mlx = mlx_init();
+    if (data->mlx == NULL)
+        return (1);
+
+    data->win = mlx_new_window(data->mlx, WINDOW_SIZE, WINDOW_SIZE, "fract-ol");
+    if (data->win == NULL)
+    {
+        clean_exit(data);
+        return (1);
+    }
+    return (0);
+}
+
+int	init_window(t_data *data)
+{
+    data->img.img = mlx_new_image(data->mlx, WINDOW_SIZE, WINDOW_SIZE);
+    if (data->img.img == NULL)
+    {
+        clean_exit(data);
+        return (1);
+    }
+    data->img.addr = mlx_get_data_addr(data->img.img,
+                                    &data->img.bits_per_pixel,
+                                    &data->img.line_length,
+                                    &data->img.endian);
+    return (0);
+}

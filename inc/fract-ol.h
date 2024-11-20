@@ -3,6 +3,8 @@
 
 # include "mlx.h"
 # include <stdlib.h>
+#include <errno.h>
+#include <limits.h>
 
 // for debug
 # include <stdio.h>
@@ -75,5 +77,16 @@ int get_color(int iteration, int max_iteration, int shift);
 void    calculate_tricorn(t_data *data, int x, int y);
 void    init_tricorn(t_data *data);
 void	clean_exit(t_data *data);
+void	print_usage(void);
+int	parse_args(int ac, char **av, t_data *data);
+int	init_mlx(t_data *data);
+int	init_window(t_data *data);
+void	setup_hooks(t_data *data);
+void print_usage(void);
+int parse_julia_param(const char *str, double *value);
+int check_julia_range(double value);
+int parse_args(int ac, char **av, t_data *data);
+int handle_julia_args(int ac, char **av, t_data *data);
+int handle_fractal_type(int ac, char **av, t_data *data);
 
 #endif
