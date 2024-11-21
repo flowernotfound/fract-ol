@@ -10,6 +10,8 @@
 # include <stdio.h>
 # include <string.h>
 
+#define ERROR_VALUE 42
+#define MAX_VAL 1.7e308
 # define WINDOW_SIZE 600
 // キーコードはどのライブラリ使うかによって変わる
 // 今はminilibx-linuxを使ってるからこうなる　mac用のものでコンパイルすると個々変える必要ある
@@ -88,5 +90,9 @@ int check_julia_range(double value);
 int parse_args(int ac, char **av, t_data *data);
 int handle_julia_args(int ac, char **av, t_data *data);
 int handle_fractal_type(int ac, char **av, t_data *data);
+
+double ft_atof(const char *str);
+char *process_input(const char *str);
+int is_digit(char c);
 
 #endif

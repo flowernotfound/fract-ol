@@ -26,7 +26,7 @@ void    move(t_data *data, int direction)
     range_r = data->max_r - data->min_r;
     range_i = data->max_i - data->min_i;
     // 移動する量　いったんこれでやってる
-    move_factor = 0.05;
+    move_factor = 0.07;
     if (direction == KEY_LEFT)
     {
         data->min_r -= range_r * move_factor;

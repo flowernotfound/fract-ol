@@ -1,34 +1,35 @@
 #include "../inc/fract-ol.h"
 
+int check_julia_range(double value)
+{
+    return (value >= -2.0 && value <= 2.0);
+}
+
 int parse_julia_param(const char *str, double *value)
 {
-    char    *endptr;
-    double  tmp;
+	double result;
+    char *processed;
 
-    errno = 0;
-    tmp = strtod(str, &endptr);
-    if (errno == ERANGE)
+    processed = process_input(str);
+    if (processed == NULL)
     {
-        printf("Parameter out of range\n");
+        printf("Invalid format\n");
         return (0);
     }
-    if (*endptr != '\0')
-    {
-        printf("Invalid character in parameter\n");
-        return (0);
-    }
-    if (!check_julia_range(tmp))
+	result = ft_atof(processed);
+	printf("result: %f\n", result);
+	if (result == ERROR_VALUE)
+	{
+		printf("Invalid parameter for Julia set\n");
+		return (0);
+	}
+    if (!check_julia_range(result))
     {
         printf("Parameter must be between -2.0 and 2.0\n");
         return (0);
     }
-    *value = tmp;
+	*value = result;
     return (1);
-}
-
-int check_julia_range(double value)
-{
-    return (value >= -2.0 && value <= 2.0);
 }
 
 int handle_julia_args(int ac, char **av, t_data *data)
@@ -38,7 +39,6 @@ int handle_julia_args(int ac, char **av, t_data *data)
 
     if (ac != 4)
     {
-        printf("Julia set requires 2 parameters\n");
         print_usage();
         return (1);
     }

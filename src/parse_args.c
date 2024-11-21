@@ -1,4 +1,3 @@
-// parse.c
 #include "../inc/fract-ol.h"
 
 void print_usage(void)
@@ -38,7 +37,7 @@ int handle_fractal_type(int ac, char **av, t_data *data)
 
 int parse_args(int ac, char **av, t_data *data)
 {
-    if (ac < 2)
+    if (ac < 2 || ac > 4)
     {
         print_usage();
         return (1);

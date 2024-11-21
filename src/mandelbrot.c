@@ -2,14 +2,14 @@
 
 void    calculate_mandelbrot(t_data *data, int x, int y)
 {
-    double  c_r;        // 実部
-    double  c_i;        // 虚部
-    double  z_r;        // zの実部
-    double  z_i;        // zの虚部
+    double  c_r;
+    double  c_i;
+    double  z_r;
+    double  z_i;
     int     iter;
     double  tmp;
     int color;
-    // プロット
+
     c_r = data->min_r + (double)x * (data->max_r - data->min_r) / WINDOW_SIZE;
     c_i = data->min_i + (double)y * (data->max_i - data->min_i) / WINDOW_SIZE;
     z_r = 0;

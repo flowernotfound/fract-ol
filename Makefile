@@ -1,7 +1,7 @@
 CC = gcc
 # CFLAGS = -Wall -Wextra -Werror -I./minilibx-linux
 CFLAGS = -I./minilibx-linux
-SRC = ./src/main.c ./src/events.c ./src/color.c ./src/init.c ./src/julia.c ./src/key.c ./src/mandelbrot.c ./src/mouse.c ./src/tricorn.c ./src/utils.c ./src/parse_1.c ./src/parse_2.c
+SRC = ./src/main.c ./src/events.c ./src/color.c ./src/init.c ./src/julia.c ./src/key.c ./src/mandelbrot.c ./src/mouse.c ./src/tricorn.c ./src/utils.c ./src/parse_args.c ./src/parse_julia.c ./src/atof.c ./src/process_input.c
 OBJ = $(SRC:.c=.o)
 NAME = fract-ol
 

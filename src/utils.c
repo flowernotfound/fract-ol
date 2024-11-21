@@ -1,6 +1,5 @@
 #include "../inc/fract-ol.h"
 
-// main.c に追加
 void	clean_exit(t_data *data)
 {
     if (data->img.img)
