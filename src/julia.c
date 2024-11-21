@@ -6,7 +6,7 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:49:08 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 18:16:21 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 18:31:04 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ static int	calculate_iterations(double z_r, double z_i, t_data *data)
 		iter++;
 	}
 	return (iter);
-}
-
-static int	get_pixel_color(int iter, t_data *data)
-{
-	if (iter == data->max_iter)
-		return (0x000000);
-	return (get_color(iter, data->max_iter, data->color_shift));
 }
 
 void	calculate_julia(t_data *data, int x, int y)

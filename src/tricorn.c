@@ -6,7 +6,7 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:48:37 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 17:41:25 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 18:31:22 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@ static int	calculate_iterations(double c_r, double c_i, int max_iter)
 		iter++;
 	}
 	return (iter);
-}
-
-static int	get_pixel_color(int iter, t_data *data)
-{
-	if (iter == data->max_iter)
-		return (0x000000);
-	return (get_color(iter, data->max_iter, data->color_shift));
 }
 
 void	calculate_tricorn(t_data *data, int x, int y)

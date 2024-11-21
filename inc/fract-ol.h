@@ -112,5 +112,6 @@ void    calculate_tricorn(t_data *data, int x, int y);
 
 // color.c
 int	get_color(int iteration, int max_iteration, int shift);
+int	get_pixel_color(int iter, t_data *data);
 
 #endif
