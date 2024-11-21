@@ -6,13 +6,14 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:43:41 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 18:53:02 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 21:37:16 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 # include "mlx.h"
+# include "./libft/ft_printf.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>

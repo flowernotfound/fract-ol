@@ -6,7 +6,7 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:48:49 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 18:51:31 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 21:33:41 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	print_usage(void)
 {
-	printf("Usage: ./fractol <type> [julia_r julia_i]\n");
-	printf("type: mandelbrot or julia or tricorn\n");
-	printf("\nExamples:\n");
-	printf("  ./fractol mandelbrot\n");
-	printf("  ./fractol julia 0.285 0.01\n");
-	printf("  ./fractol tricorn\n");
-	printf("\nJulia set parameters:\n");
-	printf("  - Must be numbers between -2.0 and 2.0\n");
-	printf("  - Examples of valid parameters:\n");
-	printf("    0.285 0.01\n");
-	printf("    -0.4 0.6\n");
-	printf("    0.0 -0.8\n");
+	ft_printf("Usage: ./fractol <type> [julia_r julia_i]\n");
+	ft_printf("type: mandelbrot or julia or tricorn\n");
+	ft_printf("\nExamples:\n");
+	ft_printf("  ./fractol mandelbrot\n");
+	ft_printf("  ./fractol julia 0.285 0.01\n");
+	ft_printf("  ./fractol tricorn\n");
+	ft_printf("\nJulia set parameters:\n");
+	ft_printf("  - Must be numbers between -2.0 and 2.0\n");
+	ft_printf("  - Examples of valid parameters:\n");
+	ft_printf("    0.285 0.01\n");
+	ft_printf("    -0.4 0.6\n");
+	ft_printf("    0.0 -0.8\n");
 }
 
 static int	handle_fractal_type(int ac, char **av, t_data *data)
@@ -35,14 +35,14 @@ static int	handle_fractal_type(int ac, char **av, t_data *data)
 		init_mandelbrot(data);
 		return (0);
 	}
-	if (strcmp(av[1], "julia") == 0)
+	if (ft_strcmp(av[1], "julia") == 0)
 		return (handle_julia_args(ac, av, data));
-	if (strcmp(av[1], "tricorn") == 0)
+	if (ft_strcmp(av[1], "tricorn") == 0)
 	{
 		init_tricorn(data);
 		return (0);
 	}
-	printf("Invalid fractal type\n");
+	ft_printf("Invalid fractal type\n");
 	print_usage();
 	return (1);
 }

@@ -1,24 +1,46 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I./minilibx-linux
-SRC = ./src/main.c ./src/events.c ./src/color.c ./src/init.c ./src/julia.c ./src/key.c ./src/mandelbrot.c ./src/mouse.c ./src/tricorn.c ./src/utils.c ./src/parse_args.c ./src/parse_julia.c ./src/atof.c ./src/process_input.c ./src/zoom.c ./src/move.c
-OBJ = $(SRC:.c=.o)
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+LDFLAGS = -fsanitize=address
+LIBFT_PATH = inc/libft
+MLX_PATH = minilibx-linux
+SRC_DIR = src
+OBJ_DIR = obj
+INC_DIR = inc
+SRC_FILES = main.c events.c color.c init.c julia.c key.c mandelbrot.c \
+           mouse.c tricorn.c utils.c parse_args.c parse_julia.c atof.c \
+           process_input.c zoom.c move.c
+SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
+LIBFT = $(LIBFT_PATH)/libft.a
+MLX_FLAGS = -L/usr/X11R6/lib -lmlx -lX11 -lXext -framework OpenGL -framework AppKit
 NAME = fract-ol
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -L/usr/X11R6/lib -lmlx -lX11 -lXext -framework OpenGL -framework AppKit -g -fsanitize=address -o $(NAME)
+$(NAME): $(OBJ_DIR) $(OBJ) $(LIBFT)
+	$(CC) $(OBJ) $(LDFLAGS) -L$(LIBFT_PATH) -lft $(MLX_FLAGS) -o $(NAME)
+	@echo "Executable $(NAME) created"
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+	@echo "Created object directory"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_PATH) -I$(MLX_PATH) -c $< -o $@
+
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_PATH)
+	@echo "Compiled libft"
 
 clean:
-	rm -f $(OBJ)
-	@echo "Object files removed."
+	@$(MAKE) -C $(LIBFT_PATH) clean
+	rm -rf $(OBJ_DIR)
+	@echo "Cleaned object files"
 
 fclean: clean
+	@$(MAKE) -C $(LIBFT_PATH) fclean
 	rm -f $(NAME)
-	@echo "Executable removed."
+	@echo "Cleaned everything"
 
 re: fclean all
 
