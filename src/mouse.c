@@ -6,11 +6,11 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:48:53 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 14:48:54 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 18:51:25 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fract-ol.h"
+#include "../inc/fractol.h"
 
 int	mouse_hook(int button, int x, int y, t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:48:24 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 14:48:26 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 18:51:45 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fract-ol.h"
+#include "../inc/fractol.h"
 
 void	clean_exit(t_data *data)
 {

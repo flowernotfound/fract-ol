@@ -6,11 +6,11 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:31:27 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 17:31:28 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 18:51:28 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fract-ol.h"
+#include "../inc/fractol.h"
 
 static void	move_left(t_data *data, double range_r, double move_factor)
 {

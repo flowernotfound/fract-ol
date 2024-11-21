@@ -6,11 +6,11 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:49:11 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 14:52:13 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 18:51:10 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fract-ol.h"
+#include "../inc/fractol.h"
 
 void	init_mandelbrot(t_data *data)
 {

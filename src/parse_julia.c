@@ -6,11 +6,11 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:48:45 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 16:56:45 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 18:51:35 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fract-ol.h"
+#include "../inc/fractol.h"
 
 static int	check_julia_range(double value)
 {

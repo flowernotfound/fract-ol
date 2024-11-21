@@ -6,18 +6,18 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:49:01 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 15:55:01 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 18:52:51 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fract-ol.h"
+#include "../inc/fractol.h"
 
 static void	setup_hooks(t_data *data)
 {
 	mlx_key_hook(data->win, key_hook, data);
 	mlx_mouse_hook(data->win, mouse_hook, data);
 	mlx_hook(data->win, X_EVENT, X_MASK, close_window, data);
-	mlx_hook(data->win, EXPOSE_EVENT, EXPOSE_MASK, handle_expose, data);
+	mlx_hook(data->win, EXPOSE_EVENT, 1L << 15, handle_expose, data);
 }
 
 int	main(int ac, char **av)

@@ -6,11 +6,11 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:49:23 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 14:49:24 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 18:50:58 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fract-ol.h"
+#include "../inc/fractol.h"
 
 static int	check_overflow_mul(double current, double factor)
 {

@@ -6,11 +6,11 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:49:08 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 18:31:04 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 18:51:12 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fract-ol.h"
+#include "../inc/fractol.h"
 
 static int	calculate_iterations(double z_r, double z_i, t_data *data)
 {

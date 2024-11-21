@@ -6,11 +6,11 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 17:31:32 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 17:31:53 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 18:51:48 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/fract-ol.h"
+#include "../inc/fractol.h"
 
 void	zoom(t_data *data, int x, int y, int zoom_in)
 {
