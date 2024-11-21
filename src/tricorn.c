@@ -6,7 +6,7 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:48:37 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 14:48:39 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 14:52:38 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    calculate_tricorn(t_data *data, int x, int y)
     {
         tmp = z_r;
         z_r = z_r * z_r - z_i * z_i + c_r;
-        z_i = -2 * tmp * z_i + c_i;  // 共役にしてるだけ
+        z_i = -2 * tmp * z_i + c_i;
         iter++;
     }
     int color;

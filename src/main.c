@@ -6,13 +6,13 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:49:01 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 14:49:02 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 15:55:01 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fract-ol.h"
 
-void	setup_hooks(t_data *data)
+static void	setup_hooks(t_data *data)
 {
 	mlx_key_hook(data->win, key_hook, data);
 	mlx_mouse_hook(data->win, mouse_hook, data);
