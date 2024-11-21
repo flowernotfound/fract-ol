@@ -6,7 +6,7 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:48:49 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 21:33:41 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/21 21:46:56 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_usage(void)
 
 static int	handle_fractal_type(int ac, char **av, t_data *data)
 {
-	if (strcmp(av[1], "mandelbrot") == 0)
+	if (ft_strcmp(av[1], "mandelbrot") == 0)
 	{
 		init_mandelbrot(data);
 		return (0);

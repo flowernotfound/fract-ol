@@ -13,10 +13,10 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
 # include <limits.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 char	*ft_itoa(int n);
 int		print_char(int c);
@@ -29,6 +29,6 @@ char	*ft_utoa(unsigned int number);
 int		ft_strlen(char *s);
 int		ft_printf(const char *format, ...);
 int		print_arg(va_list *ap, const char c);
-int	ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif
