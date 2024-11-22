@@ -6,7 +6,7 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:49:01 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/22 20:21:10 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/22 20:57:23 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,10 @@ int	main(int ac, char **av)
 		print_usage();
 		return (1);
 	}
+	if (parse_args(ac, av, &data))
+		return (1);
 	if (init_mlx(&data))
 		return (1);
-	if (parse_args(ac, av, &data))
-	{
-		clean_exit(&data);
-		return (1);
-	}
 	if (init_window(&data))
 		return (1);
 	redraw(&data);
