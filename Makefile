@@ -20,7 +20,7 @@ else
     MLX_FLAGS = -L/usr/X11R6/lib -lmlx -lX11 -lXext -framework OpenGL -framework AppKit
 endif
 
-NAME = fract-ol
+NAME = fractol
 
 all: $(NAME)
 
