@@ -6,7 +6,7 @@
 /*   By: hiroaki <hiroaki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:49:01 by hiroaki           #+#    #+#             */
-/*   Updated: 2024/11/21 18:52:51 by hiroaki          ###   ########.fr       */
+/*   Updated: 2024/11/22 20:21:10 by hiroaki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
+	if (ac < 2 || ac > 4)
+	{
+		print_usage();
+		return (1);
+	}
 	if (init_mlx(&data))
 		return (1);
 	if (parse_args(ac, av, &data))
