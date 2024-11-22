@@ -14,13 +14,10 @@ OBJ = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 LIBFT = $(LIBFT_PATH)/libft.a
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-    MLX_FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-    MLX_INC = -I/usr/include -Imlx_linux
+    MLX_FLAGS = -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 else
     MLX_FLAGS = -L/usr/X11R6/lib -lmlx -lX11 -lXext -framework OpenGL -framework AppKit
-    MLX_INC = -I$(MLX_PATH)
 endif
-
 NAME = fract-ol
 
 all: $(NAME)
@@ -34,7 +31,7 @@ $(OBJ_DIR):
 	@echo "Created object directory"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_PATH) $(MLX_INC) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_PATH) -I$(MLX_PATH) -c $< -o $@
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFT_PATH)
